@@ -1,0 +1,338 @@
+.kssctb-admin-wrap {
+    margin-top: 20px;
+}
+
+.kssctb-tabs-wrapper {
+    background: #fff;
+    border: 1px solid #ccd0d4;
+    box-shadow: 0 1px 1px rgba(0,0,0,.04);
+    margin-bottom: 20px;
+}
+
+.kssctb-tabs-wrapper .nav-tab-wrapper {
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid #ccd0d4;
+}
+
+.kssctb-tabs-wrapper .nav-tab {
+    margin-left: 0;
+    margin-bottom: -1px;
+}
+
+.kssctb-tab-content {
+    padding: 20px;
+}
+
+.kssctb-tab-panel {
+    display: none;
+}
+
+.kssctb-tab-panel:first-child {
+    display: block;
+}
+
+/* Author/Publisher/Sponsorセクション */
+.kssctb-aps-section {
+    margin-top: 30px;
+    padding: 15px 20px;
+    background: #f0f6fc;
+    border: 1px solid #c3d9e9;
+    border-radius: 4px;
+}
+
+.kssctb-aps-title {
+    margin-top: 0;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #c3d9e9;
+    color: #1d2327;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.kssctb-aps-table {
+    margin-top: 0;
+}
+
+.kssctb-aps-table tr:first-child th,
+.kssctb-aps-table tr:first-child td {
+    padding-top: 0;
+}
+
+/* 一括反映ボタンのラッパー */
+.kssctb-bulk-copy-wrapper {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #ddd;
+    text-align: left;
+}
+
+.kssctb-bulk-copy {
+    font-size: 13px;
+    padding: 4px 10px;
+    height: auto;
+}
+
+.kssctb-bulk-copy .dashicons {
+    font-size: 14px;
+    width: 14px;
+    height: 14px;
+    margin-right: 4px;
+}
+
+.kssctb-bulk-copy-wrapper .description {
+    margin-top: 8px;
+    margin-bottom: 0;
+}
+
+/* 保存ボタンエリア */
+.kssctb-save-wrapper {
+    margin-top: 20px;
+    padding: 20px;
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+#kssctb-save-settings {
+    margin-right: 10px;
+}
+
+#kssctb-reset-all {
+    background: #dc3232;
+    border-color: #dc3232;
+    color: white;
+}
+
+#kssctb-reset-all:hover {
+    background: #c92c2c;
+    border-color: #c92c2c;
+}
+
+.kssctb-save-message {
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+.kssctb-save-message.success {
+    color: #46b450;
+}
+
+.kssctb-save-message.error {
+    color: #dc3232;
+}
+
+.form-table th {
+    width: 200px;
+}
+
+.form-table input[type="text"] {
+    width: 100%;
+    max-width: 400px;
+}
+
+.form-table label {
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.form-table .description {
+    font-size: 13px;
+    font-style: italic;
+    color: #666;
+}
+
+/* Author関連フィールドのスタイル */
+.form-table tr.author-fields-person th,
+.form-table tr.author-fields-organization th,
+.form-table tr.author-fields-corporation th {
+    padding-left: 30px;
+    font-weight: normal;
+}
+
+.form-table tr.author-fields-person,
+.form-table tr.author-fields-organization,
+.form-table tr.author-fields-corporation {
+    background-color: #f9f9f9;
+}
+
+/* Publisher関連フィールドのスタイル */
+.form-table tr.publisher-fields-person th,
+.form-table tr.publisher-fields-organization th,
+.form-table tr.publisher-fields-corporation th {
+    padding-left: 30px;
+    font-weight: normal;
+}
+
+.form-table tr.publisher-fields-person,
+.form-table tr.publisher-fields-organization,
+.form-table tr.publisher-fields-corporation {
+    background-color: #f5f5f5;
+}
+
+/* Sponsor関連フィールドのスタイル */
+.form-table tr.sponsor-fields-person th,
+.form-table tr.sponsor-fields-organization th,
+.form-table tr.sponsor-fields-corporation th {
+    padding-left: 30px;
+    font-weight: normal;
+}
+
+.form-table tr.sponsor-fields-person,
+.form-table tr.sponsor-fields-organization,
+.form-table tr.sponsor-fields-corporation {
+    background-color: #f0f0f0;
+}
+
+.form-table select[name*="_default_author_type"],
+.form-table select[name*="_publisher_type"],
+.form-table select[name*="_sponsor_type"] {
+    font-weight: bold;
+}
+
+/* メディア選択ボタンのスタイル */
+.kssctb-media-select {
+    margin-left: 10px;
+    vertical-align: middle;
+}
+
+.form-table input[type="text"] + .kssctb-media-select {
+    margin-top: 5px;
+    display: inline-block;
+}
+
+/* 初期状態で関連フィールドを非表示（JavaScriptで制御） */
+.form-table tr.author-fields-person,
+.form-table tr.author-fields-organization,
+.form-table tr.author-fields-corporation,
+.form-table tr.publisher-fields-person,
+.form-table tr.publisher-fields-organization,
+.form-table tr.publisher-fields-corporation,
+.form-table tr.sponsor-fields-person,
+.form-table tr.sponsor-fields-organization,
+.form-table tr.sponsor-fields-corporation {
+    display: none;
+}
+
+/* プレースホルダーのスタイル */
+.form-table input[type="text"]::placeholder {
+    color: #999;
+    font-style: italic;
+}
+
+/* フォーカス時のスタイル */
+.form-table input[type="text"]:focus {
+    border-color: #007cba;
+    box-shadow: 0 0 0 1px #007cba;
+    outline: 2px solid transparent;
+}
+
+/* 無効化されたチェックボックスのスタイル */
+.form-table input[type="checkbox"]:disabled {
+    cursor: not-allowed;
+}
+
+.form-table label input[type="checkbox"]:disabled ~ * {
+    cursor: not-allowed;
+}
+
+/* 使用中の投稿タイプ/アーカイブタイプの説明 */
+.post-type-used-in,
+.archive-type-used-in {
+    font-weight: normal;
+    display: inline-block;
+}
+
+/* Type選択セクションのスタイル */
+.kssctb-type-settings {
+    background-color: #e3f2fd;
+    border: 2px solid #2196f3;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.kssctb-type-settings h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #1976d2;
+}
+
+.kssctb-type-settings table {
+    margin-bottom: 0;
+}
+
+.kssctb-type-settings .form-table th {
+    width: 200px;
+    padding-left: 0;
+}
+
+.kssctb-type-settings .form-table td {
+    padding-left: 10px;
+}
+
+/* 詳細フィールドのインデント */
+.kssctb-type-settings tr[class*="-fields-"] th {
+    padding-left: 20px;
+}
+
+/* 一括反映ボタンのスタイル */
+.kssctb-apply-all {
+    margin-top: 15px;
+    background-color: #2196f3;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.kssctb-apply-all:hover {
+    background-color: #1976d2;
+}
+
+/* 一括反映後の保存ボタンハイライト */
+.button-primary-highlight {
+    transition: all 0.3s ease;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 0.9;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* 一括反映成功メッセージ */
+.kssctb-bulk-copy-success {
+    font-weight: bold;
+    color: #46b450;
+    font-size: 13px;
+    padding: 5px 10px;
+    background: #e8f5e8;
+    border-radius: 3px;
+    border: 1px solid #46b450;
+    display: inline-block;
+    margin-left: 10px;
+    animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+} 
