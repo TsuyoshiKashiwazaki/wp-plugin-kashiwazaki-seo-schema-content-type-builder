@@ -1,36 +1,36 @@
-# 🚀 Kashiwazaki SEO Schema Content Type Builder
+# Kashiwazaki SEO Schema Content Type Builder
 
 [![WordPress](https://img.shields.io/badge/WordPress-5.0%2B-blue.svg)](https://wordpress.org/)
 [![PHP](https://img.shields.io/badge/PHP-7.2%2B-purple.svg)](https://php.net/)
 [![License](https://img.shields.io/badge/License-GPL--2.0--or--later-green.svg)](https://www.gnu.org/licenses/gpl-2.0.html)
-[![Version](https://img.shields.io/badge/Version-1.0.0--dev-orange.svg)](https://github.com/TsuyoshiKashiwazaki/wp-plugin-kashiwazaki-seo-schema-content-type-builder/releases)
+[![Version](https://img.shields.io/badge/Version-1.0.1--dev-orange.svg)](https://github.com/TsuyoshiKashiwazaki/wp-plugin-kashiwazaki-seo-schema-content-type-builder/releases)
 
 管理画面から簡単に構造化データ（Schema.org）を設定・出力できるWordPressプラグイン
 
-> 🎯 **GoogleのリッチリザルトやSchema.orgの仕様に準拠した構造化データを、プログラミング知識なしで簡単に実装**
+> **GoogleのリッチリザルトやSchema.orgの仕様に準拠した構造化データを、プログラミング知識なしで簡単に実装**
 
 ## 主な機能
 
-✨ **4つのContent Typeに対応**
+**4つのContent Typeに対応**
 - Article - 一般的な記事（ブログ記事、ニュース以外の記事）
 - NewsArticle - ニュース記事（時事的な内容、報道記事）
 - BlogPosting - ブログ投稿（個人的な意見、日記形式の記事）
 - WebPage - 固定ページ（会社概要、サービス紹介など）
 
-🔧 **柔軟な設定オプション**
+**柔軟な設定オプション**
 - 管理画面でContent Typeごとに投稿タイプを設定
 - Google リッチリザルトに準拠した構造化データの自動生成
 - パンくずリストの構造化データ対応
 - 各Content Type固有のプロパティ設定が可能
 
-📊 **自動取得される情報**
+**自動取得される情報**
 - 記事のURL、タイトル（headline）
 - 公開日時（datePublished）、更新日時（dateModified）
 - 説明文（description）、アイキャッチ画像（image）
 - 著者情報（author）、カテゴリー（articleSection）
 - タグ（keywords）、文字数（wordCount）
 
-## 🚀 クイックスタート
+## クイックスタート
 
 ### インストール
 
@@ -125,6 +125,10 @@ A: Googleの「リッチリザルトテスト」ツールを使用して確認�
 
 ## 更新履歴
 
+### 1.0.1 - 2025-11-01
+- Improve: カスタムクエリを使用するプラグインとの互換性を向上
+- Fix: get_queried_object()を使用してより堅牢な投稿取得処理に変更
+
 ### 1.0.0 - 2025-10-06
 - 初回リリース
 - Article、NewsArticle、BlogPosting、WebPageの4つのContent Typeに対応
@@ -141,11 +145,11 @@ GPL-2.0-or-later
 **ウェブサイト**: https://www.tsuyoshikashiwazaki.jp/
 **サポート**: プラグインに関するご質問や不具合報告は、開発者ウェブサイトまでお問い合わせください。
 
-## 🤝 貢献
+## 貢献
 
 バグ報告や機能リクエストは、GitHubのIssuesでお願いします。プルリクエストも歓迎します。
 
-## 📞 サポート
+## サポート
 
 技術的なサポートが必要な場合は、開発者ウェブサイトからお問い合わせください。
 
@@ -153,8 +157,8 @@ GPL-2.0-or-later
 
 <div align="center">
 
-**🔍 Keywords**: WordPress, SEO, Schema.org, 構造化データ, JSON-LD, リッチリザルト, Article, NewsArticle, BlogPosting, WebPage
+**Keywords**: WordPress, SEO, Schema.org, 構造化データ, JSON-LD, リッチリザルト, Article, NewsArticle, BlogPosting, WebPage
 
-Made with ❤️ by [Tsuyoshi Kashiwazaki](https://github.com/TsuyoshiKashiwazaki)
+Made by [Tsuyoshi Kashiwazaki](https://github.com/TsuyoshiKashiwazaki)
 
 </div>

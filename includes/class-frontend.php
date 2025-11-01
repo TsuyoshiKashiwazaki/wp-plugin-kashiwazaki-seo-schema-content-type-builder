@@ -26,12 +26,15 @@ class KSSCTB_Frontend {
         
         if (is_singular()) {
             // 個別投稿・固定ページの処理
-            global $post;
-            if (!$post || $post->post_status !== 'publish') {
+            // より堅牢な投稿取得方法を使用
+            $post = get_queried_object();
+
+            // 投稿オブジェクトとステータスを検証
+            if (!$post || !isset($post->post_status) || $post->post_status !== 'publish') {
                 return;
             }
-            
-            $post_type = get_post_type();
+
+            $post_type = get_post_type($post);
             $settings = KSSCTB_Settings::get_instance()->get_all_settings();
             
             // デバッグログ

@@ -3,7 +3,7 @@ Contributors: tsuyoshikashiwazaki
 Tags: schema, structured data, seo, json-ld, rich snippets
 Requires at least: 5.0
 Tested up to: 6.5
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -107,10 +107,17 @@ Googleの「リッチリザルトテスト」ツールを使用して確認で�
 
 == Changelog ==
 
+= 1.0.1 =
+* Improve: カスタムクエリを使用するプラグインとの互換性を向上
+* Fix: get_queried_object()を使用してより堅牢な投稿取得処理に変更
+
 = 1.0.0 =
 * 初回リリース
 
 == Upgrade Notice ==
+
+= 1.0.1 =
+カスタムクエリプラグインとの互換性が向上しました。
 
 = 1.0.0 =
 初回リリース 
