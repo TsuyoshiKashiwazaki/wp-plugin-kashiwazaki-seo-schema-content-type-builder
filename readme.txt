@@ -3,7 +3,7 @@ Contributors: tsuyoshikashiwazaki
 Tags: schema, structured data, seo, json-ld, rich snippets
 Requires at least: 5.0
 Tested up to: 6.5
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -107,6 +107,11 @@ Googleの「リッチリザルトテスト」ツールを使用して確認で�
 
 == Changelog ==
 
+= 1.0.2 =
+* Add: カスタムアーカイブ対応の拡張性フィルターフック追加（kssctb_archive_types, kssctb_current_archive_type）
+* Add: アーカイブページに ItemList 構造化データ追加（投稿リストを mainEntity として出力）
+* Improve: カスタムアーカイブ検出を優先するように変更し、Schema.org 準拠性を向上
+
 = 1.0.1 =
 * Improve: カスタムクエリを使用するプラグインとの互換性を向上
 * Fix: get_queried_object()を使用してより堅牢な投稿取得処理に変更
@@ -115,6 +120,9 @@ Googleの「リッチリザルトテスト」ツールを使用して確認で�
 * 初回リリース
 
 == Upgrade Notice ==
+
+= 1.0.2 =
+アーカイブページに投稿リストの構造化データが追加され、SEO効果が向上しました。カスタムアーカイブにも対応可能になりました。
 
 = 1.0.1 =
 カスタムクエリプラグインとの互換性が向上しました。

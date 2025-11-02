@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.0.2] - 2025-11-02
+
+### Added
+- カスタムアーカイブ対応の拡張性フィルターフック追加（`kssctb_archive_types`, `kssctb_current_archive_type`）
+- アーカイブページに ItemList 構造化データ追加（投稿リストを `mainEntity` > `itemListElement` として出力）
+
+### Improved
+- カスタムアーカイブ検出を優先するように変更し、WordPress 標準のアーカイブと同等に扱えるよう改善
+- CollectionPage スキーマが Schema.org の仕様により準拠（投稿リスト情報を含む）
+
 ## [1.0.1] - 2025-11-01
 
 ### Improved

@@ -3,7 +3,7 @@
 [![WordPress](https://img.shields.io/badge/WordPress-5.0%2B-blue.svg)](https://wordpress.org/)
 [![PHP](https://img.shields.io/badge/PHP-7.2%2B-purple.svg)](https://php.net/)
 [![License](https://img.shields.io/badge/License-GPL--2.0--or--later-green.svg)](https://www.gnu.org/licenses/gpl-2.0.html)
-[![Version](https://img.shields.io/badge/Version-1.0.1--dev-orange.svg)](https://github.com/TsuyoshiKashiwazaki/wp-plugin-kashiwazaki-seo-schema-content-type-builder/releases)
+[![Version](https://img.shields.io/badge/Version-1.0.2--dev-orange.svg)](https://github.com/TsuyoshiKashiwazaki/wp-plugin-kashiwazaki-seo-schema-content-type-builder/releases)
 
 管理画面から簡単に構造化データ（Schema.org）を設定・出力できるWordPressプラグイン
 
@@ -124,6 +124,11 @@ A: WebPageタブで「WebPage Schemaを有効にする」にチェックを入�
 A: Googleの「リッチリザルトテスト」ツールを使用して確認できます。
 
 ## 更新履歴
+
+### 1.0.2 - 2025-11-02
+- Add: カスタムアーカイブ対応の拡張性フィルターフック追加
+- Add: アーカイブページに ItemList 構造化データ追加
+- Improve: カスタムアーカイブ検出を優先するように変更
 
 ### 1.0.1 - 2025-11-01
 - Improve: カスタムクエリを使用するプラグインとの互換性を向上

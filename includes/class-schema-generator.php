@@ -994,6 +994,12 @@ class KSSCTB_Schema_Generator {
             }
         }
 
+        // アイテムリストを追加（コレクション内の投稿リスト）
+        $item_list = $this->get_archive_item_list();
+        if ($item_list) {
+            $schema['mainEntity'] = $item_list;
+        }
+
         return $schema;
     }
 
@@ -1094,5 +1100,36 @@ class KSSCTB_Schema_Generator {
         }
 
         return null;
+    }
+
+    /**
+     * アーカイブページのアイテムリストを生成
+     *
+     * @return array|null ItemList構造、またはnull
+     */
+    private function get_archive_item_list() {
+        global $wp_query;
+
+        if (!isset($wp_query->posts) || empty($wp_query->posts)) {
+            return null;
+        }
+
+        $items = array();
+        $position = 1;
+
+        foreach ($wp_query->posts as $post) {
+            $items[] = array(
+                '@type' => 'ListItem',
+                'position' => $position++,
+                'url' => get_permalink($post->ID),
+                'name' => get_the_title($post->ID)
+            );
+        }
+
+        return array(
+            '@type' => 'ItemList',
+            'numberOfItems' => count($items),
+            'itemListElement' => $items
+        );
     }
 }

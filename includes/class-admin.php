@@ -240,6 +240,9 @@ class KSSCTB_Admin {
                         // ホームページを追加
                         $archive_types['home'] = 'ホームページ（投稿一覧）';
 
+                        // カスタムアーカイブタイプを追加（他のプラグインが拡張可能）
+                        $archive_types = apply_filters('kssctb_archive_types', $archive_types);
+
                         $selected_archives = $settings['archive_types'] ?? array();
 
                         foreach ($archive_types as $archive_type => $archive_label) {

@@ -3,7 +3,7 @@
  * Plugin Name: Kashiwazaki SEO Schema Content Type Builder
  * Plugin URI: https://www.tsuyoshikashiwazaki.jp
  * Description: コンテンツタイプ別に構造化データ（JSON-LD）を自動生成するSEOプラグイン。Article、NewsArticle、BlogPosting、WebPageの各スキーマに対応し、パンくずリストも含めた包括的な構造化データを出力します。
- * Version:     1.0.1
+ * Version:     1.0.2
  * Author:      柏崎剛 (Tsuyoshi Kashiwazaki)
  * Author URI:  https://www.tsuyoshikashiwazaki.jp/profile/
  * Text Domain: kashiwazaki-seo-schema-content-type-builder
@@ -13,7 +13,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-define('KSSCTB_VERSION', '1.0.1');
+define('KSSCTB_VERSION', '1.0.2');
 define('KSSCTB_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('KSSCTB_PLUGIN_URL', plugin_dir_url(__FILE__));
 

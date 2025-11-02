@@ -19,11 +19,11 @@ class KSSCTB_Frontend {
     
     public function output_schema() {
         $schemas = array();
-        
+
         // デバッグログの有効/無効を取得
         $all_settings = KSSCTB_Settings::get_instance()->get_all_settings();
         $enable_debug = isset($all_settings['general']['enable_debug_log']) ? $all_settings['general']['enable_debug_log'] : false;
-        
+
         if (is_singular()) {
             // 個別投稿・固定ページの処理
             // より堅牢な投稿取得方法を使用
@@ -63,28 +63,28 @@ class KSSCTB_Frontend {
         } elseif (is_archive() || is_home()) {
             // アーカイブページの処理
             $archive_type = $this->get_current_archive_type();
-            
+
             if ($archive_type) {
                 $settings = KSSCTB_Settings::get_instance()->get_all_settings();
-                
+
                 // WebPageスキーマをアーカイブページに適用
-                if (!empty($settings['webpage']['enabled']) && 
-                    !empty($settings['webpage']['archive_types']) && 
+                if (!empty($settings['webpage']['enabled']) &&
+                    !empty($settings['webpage']['archive_types']) &&
                     in_array($archive_type, $settings['webpage']['archive_types'])) {
-                    
+
                     $generator = KSSCTB_Schema_Generator::get_instance();
                     $schema = $generator->generate_archive_schema($archive_type, $settings['webpage']);
-                    
+
                     if ($schema) {
                         $schemas[] = $schema;
                     }
                 }
             }
         }
-        
+
         if (!empty($schemas)) {
             $output = array();
-            
+
             if (count($schemas) === 1) {
                 $output = $schemas[0];
             } else {
@@ -93,19 +93,19 @@ class KSSCTB_Frontend {
                     '@graph' => $schemas
                 );
             }
-            
+
             // 常に見やすい形式で出力（JSON_PRETTY_PRINTを常に有効）
             $json_flags = JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT;
-            
+
             $json = json_encode($output, $json_flags);
-            
+
             if ($json === false) {
                 if ($enable_debug) {
                     error_log('KSSCTB: JSON encoding failed - ' . json_last_error_msg());
                 }
                 return;
             }
-            
+
             // プラグインの出力であることがわかるコメントタグ付きで見やすく出力
             echo "\n<!-- Kashiwazaki SEO Schema Content Type Builder - Structured Data -->\n";
             echo '<script type="application/ld+json">' . "\n";
@@ -116,6 +116,13 @@ class KSSCTB_Frontend {
     }
     
     private function get_current_archive_type() {
+        // カスタムアーカイブタイプの検出を最初にチェック（他のプラグインが拡張可能）
+        $custom_archive_type = apply_filters('kssctb_current_archive_type', false);
+        if ($custom_archive_type) {
+            return $custom_archive_type;
+        }
+
+        // WordPress 標準のアーカイブタイプをチェック
         if (is_category()) {
             return 'category';
         } elseif (is_tag()) {
