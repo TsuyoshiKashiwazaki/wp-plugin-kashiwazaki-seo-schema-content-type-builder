@@ -325,18 +325,13 @@ jQuery(document).ready(function ($) {
             // フィールドをクリア
             clearUserDataFields(contentType);
         } else {
-            // 特定ユーザーが選択されている場合
-            console.log('初期化 - 特定ユーザー選択:', userId);
-
-            // 詳細フィールドを表示
-            $panel.find('.author-fields-person').show();
-
             // 特定ユーザー用のコントロールを表示
             $panel.find('.kssctb-use-post-author-info').hide();
             $panel.find('.kssctb-specific-user-controls').show();
 
-            // ユーザーデータを読み込み
-            loadUserData(userId, contentType);
+            // 初期表示時は、PHP側で保存された値が出力されているため
+            // JSでユーザーデータを再ロードして上書きしないようにする
+            // loadUserData(userId, contentType);
 
             // ボタンのdata-user-idを更新
             $panel.find('.kssctb-save-user-data').attr('data-user-id', userId);
@@ -663,28 +658,17 @@ jQuery(document).ready(function ($) {
         toggleTypeFields();
 
         // 成功メッセージ
-        $button.after('<span class="kssctb-bulk-copy-success" style="color: #46b450; margin-left: 10px;">一括反映しました (' + copiedCount + '件) - 「設定を保存」ボタンを押してデータベースに保存してください</span>');
+        var $successMsg = $('<span class="kssctb-bulk-copy-success" style="color: #46b450; margin-left: 10px;">一括反映しました (' + copiedCount + '件) - 自動的に保存します...</span>');
+        $button.after($successMsg);
 
-        // 設定を保存ボタンをハイライト表示
-        var $saveButton = $('#kssctb-save-settings');
-        $saveButton.addClass('button-primary-highlight');
-        $saveButton.css({
-            'animation': 'pulse 1s infinite',
-            'box-shadow': '0 0 10px #0073aa'
-        });
-
-        setTimeout(function () {
-            $('.kssctb-bulk-copy-success').fadeOut(function () {
-                $(this).remove();
-            });
-
-            // ハイライト効果を解除
-            $saveButton.removeClass('button-primary-highlight');
-            $saveButton.css({
-                'animation': '',
-                'box-shadow': ''
-            });
-        }, 5000);
+        // 自動保存を実行
+        setTimeout(function() {
+            $('#kssctb-save-settings').click();
+            // メッセージを消す
+            setTimeout(function() {
+                $successMsg.fadeOut(function() { $(this).remove(); });
+            }, 3000);
+        }, 500);
     });
 
     // 設定保存処理

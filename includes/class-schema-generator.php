@@ -186,6 +186,27 @@ class KSSCTB_Schema_Generator {
         }
     }
 
+    /**
+     * 画像URLの妥当性を検証
+     *
+     * @param string $url 画像URL
+     * @return boolean 妥当な場合はtrue
+     */
+    private function validate_image_url($url) {
+        if (empty($url)) {
+            return false;
+        }
+
+        // 不正なファイル名チェック (例: http://.../2024/02/.png)
+        // ファイル名が空（.extensionのみ）の不正なURLを除外
+        $basename = basename($url);
+        if (strpos($basename, '.') === 0) {
+            return false;
+        }
+
+        return true;
+    }
+
     private function get_author_data($post, $settings) {
         $author_id = $post->post_author;
         $author_type = $settings['default_author_type'] ?? 'none';
@@ -221,9 +242,19 @@ class KSSCTB_Schema_Generator {
                     $author_data['url'] = $author_url;
                 }
 
-                // 画像（対象ユーザーのuser_metaから取得、なければGravatar）
-                $custom_image = get_user_meta($target_user_id, 'kssctb_profile_image', true);
-                if (!empty($custom_image)) {
+                // 画像（設定優先、次にユーザーmeta、なければGravatar）
+                $custom_image = null;
+                if (!empty($settings['author_person_image'])) {
+                    $custom_image = trim($settings['author_person_image']);
+                    // error_log('KSSCTB Debug: Using settings image: ' . $custom_image);
+                } else {
+                    $custom_image = get_user_meta($target_user_id, 'kssctb_profile_image', true);
+                    // error_log('KSSCTB Debug: Using user meta image: ' . $custom_image);
+                }
+
+                // error_log('KSSCTB Debug: Validating image: ' . $custom_image . ' -> ' . ($this->validate_image_url($custom_image) ? 'Valid' : 'Invalid'));
+
+                if (!empty($custom_image) && $this->validate_image_url($custom_image)) {
                     // ユーザー個別の画像が設定されている場合
                     $author_data['image'] = array(
                         '@type' => 'ImageObject',
@@ -234,7 +265,7 @@ class KSSCTB_Schema_Generator {
                     $author_email = get_the_author_meta('user_email', $target_user_id);
                     if ($author_email) {
                         $gravatar_url = get_avatar_url($author_email, array('size' => 200));
-                        if ($gravatar_url) {
+                        if ($gravatar_url && $this->validate_image_url($gravatar_url)) {
                             $author_data['image'] = array(
                                 '@type' => 'ImageObject',
                                 'url' => $gravatar_url
@@ -292,7 +323,7 @@ class KSSCTB_Schema_Generator {
                     $author_data['url'] = $settings['author_organization_url'];
                 }
 
-                if (!empty($settings['author_organization_logo'])) {
+                if (!empty($settings['author_organization_logo']) && $this->validate_image_url($settings['author_organization_logo'])) {
                     $author_data['logo'] = array(
                         '@type' => 'ImageObject',
                         'url' => $settings['author_organization_logo']
@@ -349,7 +380,7 @@ class KSSCTB_Schema_Generator {
                     $author_data['url'] = $settings['author_corporation_url'];
                 }
 
-                if (!empty($settings['author_corporation_logo'])) {
+                if (!empty($settings['author_corporation_logo']) && $this->validate_image_url($settings['author_corporation_logo'])) {
                     $author_data['logo'] = array(
                         '@type' => 'ImageObject',
                         'url' => $settings['author_corporation_logo']
@@ -440,7 +471,7 @@ class KSSCTB_Schema_Generator {
                         }
 
                         // 画像（カスタム設定優先、なければGravatar）
-                        if (!empty($settings['publisher_person_image'])) {
+                        if (!empty($settings['publisher_person_image']) && $this->validate_image_url($settings['publisher_person_image'])) {
                             $publisher['image'] = array(
                                 '@type' => 'ImageObject',
                                 'url' => $settings['publisher_person_image']
@@ -450,7 +481,7 @@ class KSSCTB_Schema_Generator {
                             $user_email = get_the_author_meta('user_email', $user_id);
                             if ($user_email) {
                                 $gravatar_url = get_avatar_url($user_email, array('size' => 200));
-                                if ($gravatar_url) {
+                                if ($gravatar_url && $this->validate_image_url($gravatar_url)) {
                                     $publisher['image'] = array(
                                         '@type' => 'ImageObject',
                                         'url' => $gravatar_url
@@ -507,7 +538,7 @@ class KSSCTB_Schema_Generator {
                     $publisher['url'] = $settings['publisher_organization_url'];
                 }
 
-                if (!empty($settings['publisher_organization_logo'])) {
+                if (!empty($settings['publisher_organization_logo']) && $this->validate_image_url($settings['publisher_organization_logo'])) {
                     $publisher['logo'] = array(
                         '@type' => 'ImageObject',
                         'url' => $settings['publisher_organization_logo']
@@ -564,7 +595,7 @@ class KSSCTB_Schema_Generator {
                     $publisher['url'] = $settings['publisher_corporation_url'];
                 }
 
-                if (!empty($settings['publisher_corporation_logo'])) {
+                if (!empty($settings['publisher_corporation_logo']) && $this->validate_image_url($settings['publisher_corporation_logo'])) {
                     $publisher['logo'] = array(
                         '@type' => 'ImageObject',
                         'url' => $settings['publisher_corporation_logo']
@@ -673,7 +704,7 @@ class KSSCTB_Schema_Generator {
                         }
 
                         // 画像（カスタム設定優先、なければGravatar）
-                        if (!empty($settings['sponsor_person_image'])) {
+                        if (!empty($settings['sponsor_person_image']) && $this->validate_image_url($settings['sponsor_person_image'])) {
                             $sponsor['image'] = array(
                                 '@type' => 'ImageObject',
                                 'url' => $settings['sponsor_person_image']
@@ -683,7 +714,7 @@ class KSSCTB_Schema_Generator {
                             $user_email = get_the_author_meta('user_email', $user_id);
                             if ($user_email) {
                                 $gravatar_url = get_avatar_url($user_email, array('size' => 200));
-                                if ($gravatar_url) {
+                                if ($gravatar_url && $this->validate_image_url($gravatar_url)) {
                                     $sponsor['image'] = array(
                                         '@type' => 'ImageObject',
                                         'url' => $gravatar_url
@@ -733,7 +764,7 @@ class KSSCTB_Schema_Generator {
                         $sponsor['url'] = $settings['sponsor_organization_url'];
                     }
 
-                    if (!empty($settings['sponsor_organization_logo'])) {
+                    if (!empty($settings['sponsor_organization_logo']) && $this->validate_image_url($settings['sponsor_organization_logo'])) {
                         $sponsor['logo'] = array(
                             '@type' => 'ImageObject',
                             'url' => $settings['sponsor_organization_logo']
@@ -788,7 +819,7 @@ class KSSCTB_Schema_Generator {
                         $sponsor['url'] = $settings['sponsor_corporation_url'];
                     }
 
-                    if (!empty($settings['sponsor_corporation_logo'])) {
+                    if (!empty($settings['sponsor_corporation_logo']) && $this->validate_image_url($settings['sponsor_corporation_logo'])) {
                         $sponsor['logo'] = array(
                             '@type' => 'ImageObject',
                             'url' => $settings['sponsor_corporation_logo']
@@ -856,19 +887,24 @@ class KSSCTB_Schema_Generator {
                 // URLをそのまま使用（WordPressが既に適切な形式で返している）
                 $image_url = $image_src[0];
 
-                $image = array(
-                    '@type' => 'ImageObject',
-                    'url' => $image_url,
-                    'width' => $image_src[1],
-                    'height' => $image_src[2]
-                );
+                // 不正なURLチェック (例: http://.../2024/02/.png)
+                // ファイル名が空（.extensionのみ）の不正なURLを除外
+                $basename = basename($image_url);
+                if (strpos($basename, '.') !== 0) {
+                    $image = array(
+                        '@type' => 'ImageObject',
+                        'url' => $image_url,
+                        'width' => $image_src[1],
+                        'height' => $image_src[2]
+                    );
 
-                $alt_text = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
-                if ($alt_text) {
-                    $image['name'] = $alt_text;
+                    $alt_text = get_post_meta($thumbnail_id, '_wp_attachment_image_alt', true);
+                    if ($alt_text) {
+                        $image['name'] = $alt_text;
+                    }
+
+                    $images[] = $image;
                 }
-
-                $images[] = $image;
             }
         }
 
@@ -878,6 +914,13 @@ class KSSCTB_Schema_Generator {
                 foreach (array_slice($matches[1], 0, 3) as $img_url) {
                     // HTMLエンティティをデコードしてから検証
                     $img_url = html_entity_decode($img_url, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+                    
+                    // 不正なURLチェック
+                    $basename = basename($img_url);
+                    if (strpos($basename, '.') === 0) {
+                        continue;
+                    }
+
                     if (filter_var($img_url, FILTER_VALIDATE_URL)) {
                         $images[] = $img_url;
                     }

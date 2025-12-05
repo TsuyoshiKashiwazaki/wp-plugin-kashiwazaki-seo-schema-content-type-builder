@@ -1431,12 +1431,8 @@ class KSSCTB_Admin {
                             if (strpos($field_key, '_url') !== false ||
                                 strpos($field_key, '_logo') !== false ||
                                 strpos($field_key, '_image') !== false) {
+                                // esc_url_rawのみを行い、厳密なバリデーションは行わない（localhostや日本語パスを許容するため）
                                 $value = esc_url_raw($_POST[$post_key]);
-
-                                // URL形式の検証
-                                if (!empty($value) && !filter_var($value, FILTER_VALIDATE_URL)) {
-                                    throw new Exception(sprintf('無効なURL形式です: %s', $field['label']));
-                                }
                             } else {
                                 $value = sanitize_text_field($_POST[$post_key]);
                             }
