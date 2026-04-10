@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>概要 - Kashiwazaki SEO Schema Content Type Builder マニュアル</title>
+    <link rel="stylesheet" href="css/style.css?v=1">
+</head>
+<body>
+<button class="hamburger-btn" aria-label="メニュー">&#9776;</button>
+
+<nav class="sidebar">
+    <div class="sidebar-header">
+        <h2 style="color:#fff;">Schema Builder</h2>
+        <span class="version">v1.0.3</span>
+        <img src="images/main-visual.png" alt="" style="width:100%;border-radius:4px;margin-top:8px;">
+    </div>
+    <ul>
+        <li class="active"><a href="index.html">概要</a></li>
+        <li><a href="setup.html">インストール・初期設定</a></li>
+        <li><a href="schema-settings.html">スキーマ設定</a></li>
+        <li><a href="troubleshooting.html">トラブルシューティング</a></li>
+    </ul>
+</nav>
+
+<main class="content">
+    <h1>Kashiwazaki SEO Schema Content Type Builder マニュアル</h1>
+    <img src="images/main-visual.png" alt="Kashiwazaki SEO Schema Content Type Builder メインビジュアル" style="width:100%;border-radius:6px;margin-bottom:16px;">
+    <p class="lead">Kashiwazaki SEO Schema Content Type Builder は、WordPressの投稿タイプごとに構造化データ（JSON-LD）を自動生成するSEOプラグインです。Article、NewsArticle、BlogPosting、WebPageの4種類のスキーマに対応し、BreadcrumbListやアーカイブページのスキーマも含めた包括的な構造化データを出力します。</p>
+
+    <p>構造化データ（JSON-LD）は、検索エンジンがコンテンツの意味を正確に理解するための重要な技術要素です。本プラグインはArticle、NewsArticle、BlogPosting、WebPageの4種類のスキーマを投稿タイプ別に自動出力します。</p>
+
+    <h2>主な機能</h2>
+
+    <div class="feature-cards">
+        <div class="feature-card">
+            <span class="icon">&#128196;</span>
+            <h4>JSON-LD自動生成</h4>
+            <p>Article/NewsArticle/BlogPosting/WebPageの4種類の構造化データを自動出力</p>
+        </div>
+        <div class="feature-card">
+            <span class="icon">&#9881;</span>
+            <h4>投稿タイプ別設定</h4>
+            <p>投稿タイプごとにスキーマタイプと出力内容を個別設定</p>
+        </div>
+        <div class="feature-card">
+            <span class="icon">&#128218;</span>
+            <h4>アーカイブ対応</h4>
+            <p>アーカイブページにもCollectionPage等のスキーマを出力</p>
+        </div>
+    </div>
+
+    <h2>プラグインの特長</h2>
+
+    <ul>
+        <li>Article、NewsArticle、BlogPosting、WebPageの4種類のスキーマタイプに対応</li>
+        <li>投稿タイプ（post、page、カスタム投稿タイプ）ごとにスキーマタイプと出力内容を個別設定</li>
+        <li>BreadcrumbList構造化データの自動生成に対応</li>
+        <li>アーカイブページにCollectionPage等のスキーマを自動出力</li>
+        <li>管理画面は1ページ・5タブ構成でシンプルに設定を管理</li>
+        <li>4つのAJAXハンドラーによるスムーズな設定操作</li>
+        <li>外部HTTPリクエストなし、軽量で高速に動作</li>
+    </ul>
+
+    <figure class="infographic">
+        <img src="images/infographics/overview-flow.png" alt="プラグイン概要フロー図">
+        <figcaption>Kashiwazaki SEO Schema Content Type Builder の全体フロー</figcaption>
+    </figure>
+
+    <h2>SEO・GEO（生成AI最適化）への効果</h2>
+
+    <h3>リッチリザルトの実現</h3>
+    <p>本プラグインが出力するJSON-LD構造化データにより、Google検索結果にリッチリザルト（記事名、著者名、公開日など）が表示されるようになります。構造化データはArticle、NewsArticle、BlogPosting、WebPageの各スキーマに対応しており、コンテンツの種類に応じた正確なマークアップが可能です。</p>
+
+    <h3>投稿タイプ別の正確なスキーマ割り当て</h3>
+    <p>投稿タイプごとにスキーマタイプを個別設定できるため、ニュース記事にはNewsArticle、ブログ記事にはBlogPosting、固定ページにはWebPageといった正確なタイプ割り当てが実現します。これにより、検索エンジンがコンテンツの性質を正しく理解できます。</p>
+
+    <h3>サイト階層構造の可視化</h3>
+    <p>BreadcrumbList構造化データの自動出力により、検索エンジンがサイトの階層構造を正確に把握できます。検索結果にパンくずナビゲーションが表示され、ユーザーのサイト内回遊を促進します。</p>
+
+    <h3>生成AI（GEO）への対応</h3>
+    <p>構造化データから、AIがエンティティ情報（記事の著者、公開日、コンテンツタイプなど）を正確に抽出できるようになります。JSON-LDによる機械可読なデータ提供は、AI検索エンジンやLLMベースのシステムがコンテンツを正確に引用する際に重要な役割を果たします。</p>
+
+    <h2>目次（マニュアル構成）</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th style="width:35%;">ページ</th>
+                <th>内容</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><a href="index.html">概要</a></td>
+                <td>プラグインの機能概要、SEO/GEO効果、動作要件</td>
+            </tr>
+            <tr>
+                <td><a href="setup.html">インストール・初期設定</a></td>
+                <td>インストール手順、有効化、管理画面の基本操作</td>
+            </tr>
+            <tr>
+                <td><a href="schema-settings.html">スキーマ設定</a></td>
+                <td>投稿タイプ別スキーマ設定、BreadcrumbList、アーカイブページ設定</td>
+            </tr>
+            <tr>
+                <td><a href="troubleshooting.html">トラブルシューティング</a></td>
+                <td>よくある問題と対処法、動作要件、技術仕様、アーキテクチャ</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>動作要件</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th style="width:35%;">項目</th>
+                <th>要件</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>WordPress</td>
+                <td>5.0 以上</td>
+            </tr>
+            <tr>
+                <td>PHP</td>
+                <td>7.4 以上</td>
+            </tr>
+            <tr>
+                <td>対応ブラウザ</td>
+                <td>Chrome、Firefox、Safari、Edge（最新版）</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="callout callout-tip">
+        <div class="callout-title">ヒント</div>
+        <p>インストール後すぐに使い始めたい場合は、<a href="setup.html">インストール・初期設定</a>ページに進んでください。</p>
+    </div>
+
+    <nav class="page-nav">
+        <span></span>
+        <a href="setup.html" class="next">インストール・初期設定 &raquo;</a>
+    </nav>
+
+    <footer class="manual-footer">
+        <p>作者: <a href="https://www.tsuyoshikashiwazaki.jp/profile/" target="_blank" rel="noopener">柏崎剛（Tsuyoshi Kashiwazaki）</a></p>
+        <p>プラグイン: Kashiwazaki SEO Schema Content Type Builder v1.0.3</p>
+    </footer>
+</main>
+
+<div class="lightbox"></div>
+<script src="js/manual.js?v=1"></script>
+</body>
+</html>
